@@ -76,9 +76,9 @@ class MainActivity : AppCompatActivity() {
 
 
 }
-
+/*
+Dice class with one behaviour and state
+ */
 class Dice(private val numSides: Int) {
-    fun roll(): Int {
-        return  Random().nextInt(numSides) + 1 //(1..numSides).random()
-    }
+    fun roll() = Random().nextInt(numSides) + 1
 }
