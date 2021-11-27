@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import java.util.*
 
 /**
@@ -38,14 +37,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun rollDice() {
         // create new dice object with 6 sides and roll it
-        val dice1 = Dice(6)
-        val diceRoll = dice1.roll()
+        val firstDice = Dice(6)
+        val diceRoll = firstDice.roll()
         // create a second dice object with 6 sides and roll it
-        val dice2 = Dice(6)
-        val dice2Roll = dice2.roll()
+        val secondDice = Dice(6)
+        val deiceRoll2 = secondDice.roll()
 
         //update the screen with the dice roll
-
 
         // Determine which drawable resourse ID to use based on the dice roll
         val drawableResource1 = when (diceRoll) {
@@ -55,9 +53,8 @@ class MainActivity : AppCompatActivity() {
             4 -> R.drawable.dice_4
             5 -> R.drawable.dice_5
             else  -> R.drawable.dice_6
-
         }
-        val drawableResource2 = when(dice2Roll){
+        val drawableResource2 = when(deiceRoll2){
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
             3 -> R.drawable.dice_3
@@ -70,11 +67,8 @@ class MainActivity : AppCompatActivity() {
         diceImage2.setImageResource(drawableResource2)
         // update the content description
         diceImage1.contentDescription = diceRoll.toString()
-        diceImage2.contentDescription = dice2Roll.toString()
-
+        diceImage2.contentDescription = deiceRoll2.toString()
     }
-
-
 }
 /*
 Dice class with one behaviour and state
