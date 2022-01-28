@@ -13,8 +13,8 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var diceImage1: ImageView
-    lateinit var diceImage2: ImageView
+    lateinit var firstDiceImage: ImageView
+    lateinit var secondDiceImage: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity() {
 
         val rollButton: Button = findViewById(R.id.button)
 
-        diceImage1 = findViewById(R.id.imageView4)
-        diceImage2 = findViewById(R.id.imageView7)
+        firstDiceImage = findViewById(R.id.imageView4)
+        secondDiceImage = findViewById(R.id.imageView7)
 
         rollButton.setOnClickListener { rollDice() }
         // Do a roll dice when the app starts
@@ -37,16 +37,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun rollDice() {
         // create new dice object with 6 sides and roll it
-        val firstDice = Dice(6)
-        val diceRoll = firstDice.roll()
+        val firstDiceRoll = Dice(6).roll()
         // create a second dice object with 6 sides and roll it
-        val secondDice = Dice(6)
-        val deiceRoll2 = secondDice.roll()
+        val secondDiceRoll = Dice(6).roll()
 
         //update the screen with the dice roll
 
         // Determine which drawable resourse ID to use based on the dice roll
-        val drawableResource1 = when (diceRoll) {
+        val drawableResource1 = when (firstDiceRoll) {
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
             3 -> R.drawable.dice_3
@@ -54,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             5 -> R.drawable.dice_5
             else  -> R.drawable.dice_6
         }
-        val drawableResource2 = when(deiceRoll2){
+        val drawableResource2 = when(secondDiceRoll){
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
             3 -> R.drawable.dice_3
@@ -63,11 +61,11 @@ class MainActivity : AppCompatActivity() {
             else  -> R.drawable.dice_6
         }
 // Update the ImageView with the correct drawable resource ID
-        diceImage1.setImageResource(drawableResource1)
-        diceImage2.setImageResource(drawableResource2)
+        firstDiceImage.setImageResource(drawableResource1)
+        secondDiceImage.setImageResource(drawableResource2)
         // update the content description
-        diceImage1.contentDescription = diceRoll.toString()
-        diceImage2.contentDescription = deiceRoll2.toString()
+        firstDiceImage.contentDescription = firstDiceRoll.toString()
+        secondDiceImage.contentDescription = secondDiceRoll.toString()
     }
 }
 /*
